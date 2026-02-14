@@ -1,0 +1,15 @@
+﻿{
+  "name": "Personal Dashboard",
+  "short_name": "Dashboard",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#e6fffb",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4ca.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ]
+}

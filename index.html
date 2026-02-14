@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Personal Dashboard</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar card">
+        <div>
+          <h1>My Dashboard</h1>
+          <div id="datetime" class="muted"></div>
+        </div>
+        <div class="topbar-actions">
+          <button id="notification-btn" class="btn">通知許可</button>
+          <button id="settings-toggle" class="btn">設定</button>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="panel card" id="left-panel">
+          <h2>今日の一覧</h2>
+          <div id="today-summary"></div>
+
+          <h2>天気（3日）</h2>
+          <div id="weather-location" class="muted">位置情報を取得中...</div>
+          <div id="weather-forecast" class="list"></div>
+
+          <h2>駅時刻表（サンプル/ODPT）</h2>
+          <form id="train-form" class="row-form">
+            <input id="train-station" placeholder="駅名" required />
+            <input id="train-operator" placeholder="鉄道会社" required />
+            <input id="train-direction" placeholder="方面" required />
+            <button class="btn" type="submit">追加</button>
+          </form>
+          <div id="train-list" class="list"></div>
+
+          <h2>ニュース</h2>
+          <div class="inline-controls">
+            <select id="news-category">
+              <option value="top">総合</option>
+              <option value="business">経済</option>
+              <option value="it">テック</option>
+            </select>
+            <button id="news-refresh" class="btn">更新</button>
+          </div>
+          <div id="news-list" class="list"></div>
+        </section>
+
+        <section class="panel card" id="center-panel">
+          <h2>予定カレンダー</h2>
+          <form id="event-form" class="row-form">
+            <input id="event-title" placeholder="予定タイトル" required />
+            <label><input id="event-all-day" type="checkbox" /> 終日</label>
+            <input id="event-date" type="date" required />
+            <input id="event-datetime" type="datetime-local" />
+            <select id="event-repeat">
+              <option value="none">繰り返しなし</option>
+              <option value="daily">毎日</option>
+              <option value="weekly">毎週</option>
+              <option value="monthly">毎月</option>
+            </select>
+            <button class="btn" type="submit">追加</button>
+          </form>
+          <div id="event-list" class="list"></div>
+        </section>
+
+        <section class="panel card" id="right-panel">
+          <h2>TODO</h2>
+          <form id="todo-form" class="row-form">
+            <input id="todo-title" placeholder="タスク" required />
+            <input id="todo-deadline" type="datetime-local" />
+            <select id="todo-priority">
+              <option value="high">高</option>
+              <option value="medium" selected>中</option>
+              <option value="low">低</option>
+            </select>
+            <button class="btn" type="submit">追加</button>
+          </form>
+          <div id="todo-list" class="list"></div>
+
+          <h2>買い物リスト</h2>
+          <form id="shopping-form" class="row-form">
+            <input id="shopping-title" placeholder="買うもの" required />
+            <button class="btn" type="submit">追加</button>
+          </form>
+          <div id="shopping-list" class="list"></div>
+        </section>
+      </main>
+
+      <aside id="settings-panel" class="settings card hidden">
+        <h2>通知設定</h2>
+        <label><input type="checkbox" id="notify-events" checked /> 予定通知</label>
+        <label><input type="checkbox" id="notify-todos" checked /> TODO通知</label>
+        <label>静音時間開始 <input type="time" id="dnd-start" value="22:30" /></label>
+        <label>静音時間終了 <input type="time" id="dnd-end" value="07:00" /></label>
+        <label>TODO日次通知時刻 <input type="time" id="todo-daily" value="20:00" /></label>
+        <label>ODPT APIキー <input type="password" id="odpt-key" placeholder="acl:consumerKey" /></label>
+        <button id="save-settings" class="btn">設定保存</button>
+      </aside>
+    </div>
+
+    <div id="in-app-banner" class="banner hidden"></div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
